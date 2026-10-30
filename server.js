@@ -6,6 +6,7 @@
 const express = require('express');
 const sql = require('mssql');
 const path = require('path');
+const cors = require('cors');
 
 // ---- CONFIGURACIÓN (cambia estos datos si tu SQL Server es distinto) ----
 const SERVIDOR = 'localhost';
@@ -36,6 +37,7 @@ poolPromise.catch(err => {
 
 // ---- UTILIDADES ----
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
